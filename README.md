@@ -1,6 +1,6 @@
 # Open-AutoGLM
 
-[Readme in English](README_en.md)
+[Readme in English](README_en.md) | [📖 使用自定义 OpenAI 模型](docs/OPENAI_COMPATIBLE.md)
 
 <div align="center">
 <img src=resources/logo.svg width="20%"/>
@@ -27,6 +27,8 @@ Phone Agent 是一个基于 AutoGLM 构建的手机端智能助理框架，它�
 ADB(Android Debug Bridge)来控制设备，以视觉语言模型进行屏幕感知，再结合智能规划能力生成并执行操作流程。用户只需用自然语言描述需求，如“打开小红书搜索美食”，Phone
 Agent 即可自动解析意图、理解当前界面、规划下一步动作并完成整个流程。系统还内置敏感操作确认机制，并支持在登录或验证码场景下进行人工接管。同时，它提供远程
 ADB 调试能力，可通过 WiFi 或网络连接设备，实现灵活的远程控制与开发。
+
+**🔥 新功能：Phone Agent 现已支持任何具有视觉功能的 OpenAI 兼容 API！** 可使用 GPT-4 Vision、Azure OpenAI 或自带的视觉模型。[了解更多 →](docs/OPENAI_COMPATIBLE.md)
 
 > ⚠️
 > 本项目仅供研究和学习使用。严禁用于非法获取信息、干扰系统或任何违法活动。请仔细审阅 [使用条款](resources/privacy_policy.txt)。
@@ -103,9 +105,9 @@ adb devices
 
 ### 3. 启动模型服务
 
-你可以选择自行部署模型服务，或使用第三方模型服务商。
+你可以选择自行部署模型服务，使用第三方模型服务商，或**使用任何支持视觉功能的 OpenAI 兼容 API**（包括 OpenAI GPT-4 Vision、Azure OpenAI 以及其他兼容服务）。
 
-#### 选项 A: 使用第三方模型服务
+#### 选项 A: 使用第三方 AutoGLM 模型服务
 
 如果你不想自行部署模型，可以使用以下已部署我们模型的第三方服务：
 
@@ -133,7 +135,55 @@ python main.py --base-url https://open.bigmodel.cn/api/paas/v4 --model "autoglm-
 python main.py --base-url https://api-inference.modelscope.cn/v1 --model "ZhipuAI/AutoGLM-Phone-9B" --apikey "your-modelscope-api-key" "打开美团搜索附近的火锅店"
 ```
 
-#### 选项 B: 自行部署模型
+#### 选项 B: 使用自己的 OpenAI 兼容视觉模型
+
+Phone Agent 兼容**任何支持视觉功能的 OpenAI 兼容 API**。这包括：
+
+- **OpenAI GPT-4 Vision**（GPT-4V、GPT-4o）
+- **Azure OpenAI 服务**的视觉模型
+- **其他 OpenAI 兼容服务商**的视觉模型（例如通过 LiteLLM、text-generation-webui 等部署的本地大模型）
+
+**自定义模型的要求：**
+- 必须支持 OpenAI Chat Completions API 格式
+- 必须支持视觉输入（多模态 - 文本 + 图像）
+- 必须能够处理消息内容中的 base64 编码图像
+
+**使用 OpenAI GPT-4 Vision 的示例：**
+
+```bash
+# 使用 OpenAI GPT-4 Vision
+python main.py \
+  --base-url https://api.openai.com/v1 \
+  --model "gpt-4o" \
+  --apikey "your-openai-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**使用 Azure OpenAI 的示例：**
+
+```bash
+# 使用 Azure OpenAI 的 GPT-4 Vision
+python main.py \
+  --base-url https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME \
+  --model "gpt-4-vision-preview" \
+  --apikey "your-azure-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**使用自定义 OpenAI 兼容端点的示例：**
+
+```bash
+# 使用任何支持视觉的 OpenAI 兼容端点
+python main.py \
+  --base-url http://your-server:port/v1 \
+  --model "your-vision-model-name" \
+  --apikey "your-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**注意：** 使用自定义模型时，请确保它们针对 GUI 自动化任务进行了优化。AutoGLM 模型是专门为手机屏幕理解和动作规划微调的，可能比通用视觉模型提供更好的性能。
+
+#### 选项 C: 自行部署 AutoGLM 模型
 
 如果你希望在本地或自己的服务器上部署模型：
 

@@ -1,6 +1,6 @@
 # Open-AutoGLM
 
-[中文阅读.](./README.md)
+[中文阅读.](./README.md) | [📖 Using Custom OpenAI Models](docs/OPENAI_COMPATIBLE.md)
 
 <div align="center">
 <img src=resources/logo.svg width="20%"/>
@@ -21,6 +21,8 @@ https://raw.githubusercontent.com/zai-org/Open-AutoGLM/refs/heads/main/README_en
 ## Project Introduction
 
 Phone Agent is a mobile intelligent assistant framework built on AutoGLM. It understands phone screen content in a multimodal manner and helps users complete tasks through automated operations. The system controls devices via ADB (Android Debug Bridge), perceives screens using vision-language models, and generates and executes operation workflows through intelligent planning. Users simply describe their needs in natural language, such as "Open eBay and search for wireless earphones." and Phone Agent will automatically parse the intent, understand the current interface, plan the next action, and complete the entire workflow. The system also includes a sensitive operation confirmation mechanism and supports manual takeover during login or verification code scenarios. Additionally, it provides remote ADB debugging capabilities, allowing device connection via WiFi or network for flexible remote control and development.
+
+**🔥 NEW: Phone Agent now supports any OpenAI-compatible API with vision capabilities!** Use GPT-4 Vision, Azure OpenAI, or bring your own vision model. [Learn more →](docs/OPENAI_COMPATIBLE.md)
 
 > ⚠️ This project is for research and learning purposes only. It is strictly prohibited to use for illegal information acquisition, system interference, or any illegal activities. Please carefully review the [Terms of Use](resources/privacy_policy_en.txt).
 
@@ -94,9 +96,9 @@ adb devices
 
 ### 3. Start Model Service
 
-You can choose to deploy the model service yourself or use a third-party model service provider.
+You can choose to deploy the model service yourself, use a third-party model service provider, or **use any OpenAI-compatible API with vision support** (including OpenAI GPT-4 Vision, Azure OpenAI, and other compatible providers).
 
-#### Option A: Use Third-Party Model Services
+#### Option A: Use Third-Party AutoGLM Model Services
 
 If you don't want to deploy the model yourself, you can use the following third-party services that have already deployed our model:
 
@@ -134,7 +136,55 @@ python main.py --base-url https://api.novita.ai/openai --model "zai-org/autoglm-
 python main.py --base-url https://api.parasail.io/v1 --model "parasail-auto-glm-9b-multilingual" --apikey "your-parasail-api-key" "Open Chrome browser"
 ```
 
-#### Option B: Deploy Model Yourself
+#### Option B: Use Your Own OpenAI-Compatible Vision Model
+
+Phone Agent is compatible with **any OpenAI-compatible API that supports vision capabilities**. This includes:
+
+- **OpenAI GPT-4 Vision** (GPT-4V, GPT-4o)
+- **Azure OpenAI Service** with vision-enabled models
+- **Other OpenAI-compatible providers** with vision support (e.g., local LLMs via LiteLLM, text-generation-webui, etc.)
+
+**Requirements for custom models:**
+- Must support the OpenAI Chat Completions API format
+- Must support vision input (multimodal - text + images)
+- Must be able to handle base64-encoded images in message content
+
+**Example with OpenAI GPT-4 Vision:**
+
+```bash
+# Using OpenAI GPT-4 Vision
+python main.py \
+  --base-url https://api.openai.com/v1 \
+  --model "gpt-4o" \
+  --apikey "your-openai-api-key" \
+  "Open Chrome browser"
+```
+
+**Example with Azure OpenAI:**
+
+```bash
+# Using Azure OpenAI with GPT-4 Vision
+python main.py \
+  --base-url https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME \
+  --model "gpt-4-vision-preview" \
+  --apikey "your-azure-api-key" \
+  "Open Chrome browser"
+```
+
+**Example with custom OpenAI-compatible endpoint:**
+
+```bash
+# Using any OpenAI-compatible endpoint with vision support
+python main.py \
+  --base-url http://your-server:port/v1 \
+  --model "your-vision-model-name" \
+  --apikey "your-api-key" \
+  "Open Chrome browser"
+```
+
+**Note:** When using custom models, ensure they are optimized for GUI automation tasks. The AutoGLM models are specifically fine-tuned for phone screen understanding and action planning, which may provide better performance than general-purpose vision models.
+
+#### Option C: Deploy AutoGLM Model Yourself
 
 If you prefer to deploy the model locally or on your own server:
 

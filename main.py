@@ -257,11 +257,17 @@ def parse_args() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    # Run with default settings
+    # Run with default settings (local AutoGLM model)
     python main.py
 
     # Specify model endpoint
     python main.py --base-url http://localhost:8000/v1
+
+    # Use OpenAI GPT-4 Vision
+    python main.py --base-url https://api.openai.com/v1 --model gpt-4o --apikey sk-xxxxx
+
+    # Use Azure OpenAI
+    python main.py --base-url https://YOUR_RESOURCE.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT --model gpt-4-vision-preview --apikey xxxxx
 
     # Use API key for authentication
     python main.py --apikey sk-xxxxx
@@ -288,14 +294,14 @@ Examples:
         "--base-url",
         type=str,
         default=os.getenv("PHONE_AGENT_BASE_URL", "http://localhost:8000/v1"),
-        help="Model API base URL",
+        help="Model API base URL (supports any OpenAI-compatible endpoint with vision)",
     )
 
     parser.add_argument(
         "--model",
         type=str,
         default=os.getenv("PHONE_AGENT_MODEL", "autoglm-phone-9b"),
-        help="Model name",
+        help="Model name (e.g., 'autoglm-phone-9b', 'gpt-4o', 'gpt-4-vision-preview')",
     )
 
     parser.add_argument(
