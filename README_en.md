@@ -1,6 +1,6 @@
 # Open-AutoGLM
 
-[中文阅读.](./README.md)
+[中文阅读.](./README.md) | [📖 Using Custom OpenAI Models](docs/OPENAI_COMPATIBLE.md)
 
 <div align="center">
 <img src=resources/logo.svg width="20%"/>
@@ -21,6 +21,8 @@ https://raw.githubusercontent.com/zai-org/Open-AutoGLM/refs/heads/main/README_en
 ## Project Introduction
 
 Phone Agent is a mobile intelligent assistant framework built on AutoGLM. It understands phone screen content in a multimodal manner and helps users complete tasks through automated operations. The system controls devices via ADB (Android Debug Bridge), perceives screens using vision-language models, and generates and executes operation workflows through intelligent planning. Users simply describe their needs in natural language, such as "Open eBay and search for wireless earphones." and Phone Agent will automatically parse the intent, understand the current interface, plan the next action, and complete the entire workflow. The system also includes a sensitive operation confirmation mechanism and supports manual takeover during login or verification code scenarios. Additionally, it provides remote ADB debugging capabilities, allowing device connection via WiFi or network for flexible remote control and development.
+
+**🔥 NEW: Phone Agent now supports any OpenAI-compatible API with vision capabilities!** Use GPT-4 Vision, Azure OpenAI, or bring your own vision model. [Learn more →](docs/OPENAI_COMPATIBLE.md)
 
 > ⚠️ This project is for research and learning purposes only. It is strictly prohibited to use for illegal information acquisition, system interference, or any illegal activities. Please carefully review the [Terms of Use](resources/privacy_policy_en.txt).
 

@@ -1,6 +1,6 @@
 # Open-AutoGLM
 
-[Readme in English](README_en.md)
+[Readme in English](README_en.md) | [📖 使用自定义 OpenAI 模型](docs/OPENAI_COMPATIBLE.md)
 
 <div align="center">
 <img src=resources/logo.svg width="20%"/>
@@ -29,6 +29,8 @@ Agent 即可自动解析意图、理解当前界面、规划下一步动作并�
 ADB 调试能力，可通过 WiFi 或网络连接设备，实现灵活的远程控制与开发。
 
 > ⚠️
+
+**🔥 新功能：Phone Agent 现已支持任何具有视觉功能的 OpenAI 兼容 API！** 可使用 GPT-4 Vision、Azure OpenAI 或自带的视觉模型。[了解更多 →](docs/OPENAI_COMPATIBLE.md)
 > 本项目仅供研究和学习使用。严禁用于非法获取信息、干扰系统或任何违法活动。请仔细审阅 [使用条款](resources/privacy_policy.txt)。
 
 ## 模型下载地址
