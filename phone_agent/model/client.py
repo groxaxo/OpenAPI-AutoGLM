@@ -9,7 +9,31 @@ from openai import OpenAI
 
 @dataclass
 class ModelConfig:
-    """Configuration for the AI model."""
+    """
+    Configuration for the AI model.
+    
+    This configuration supports any OpenAI-compatible API with vision capabilities,
+    including:
+    - AutoGLM models (optimized for phone automation)
+    - OpenAI GPT-4 Vision (GPT-4V, GPT-4o)
+    - Azure OpenAI Service with vision-enabled models
+    - Other OpenAI-compatible providers with vision support
+    
+    Required model capabilities:
+    - Support for OpenAI Chat Completions API format
+    - Vision input support (multimodal - text + images)
+    - Ability to process base64-encoded images in message content
+    
+    Args:
+        base_url: API base URL (e.g., "https://api.openai.com/v1")
+        api_key: API key for authentication
+        model_name: Model name (e.g., "gpt-4o", "autoglm-phone-9b")
+        max_tokens: Maximum output tokens
+        temperature: Sampling temperature (0.0 for deterministic)
+        top_p: Nucleus sampling parameter
+        frequency_penalty: Frequency penalty for repetition reduction
+        extra_body: Additional provider-specific parameters
+    """
 
     base_url: str = "http://localhost:8000/v1"
     api_key: str = "EMPTY"

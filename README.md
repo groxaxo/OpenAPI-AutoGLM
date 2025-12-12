@@ -103,9 +103,9 @@ adb devices
 
 ### 3. 启动模型服务
 
-你可以选择自行部署模型服务，或使用第三方模型服务商。
+你可以选择自行部署模型服务，使用第三方模型服务商，或**使用任何支持视觉功能的 OpenAI 兼容 API**（包括 OpenAI GPT-4 Vision、Azure OpenAI 以及其他兼容服务）。
 
-#### 选项 A: 使用第三方模型服务
+#### 选项 A: 使用第三方 AutoGLM 模型服务
 
 如果你不想自行部署模型，可以使用以下已部署我们模型的第三方服务：
 
@@ -133,7 +133,55 @@ python main.py --base-url https://open.bigmodel.cn/api/paas/v4 --model "autoglm-
 python main.py --base-url https://api-inference.modelscope.cn/v1 --model "ZhipuAI/AutoGLM-Phone-9B" --apikey "your-modelscope-api-key" "打开美团搜索附近的火锅店"
 ```
 
-#### 选项 B: 自行部署模型
+#### 选项 B: 使用自己的 OpenAI 兼容视觉模型
+
+Phone Agent 兼容**任何支持视觉功能的 OpenAI 兼容 API**。这包括：
+
+- **OpenAI GPT-4 Vision**（GPT-4V、GPT-4o）
+- **Azure OpenAI 服务**的视觉模型
+- **其他 OpenAI 兼容服务商**的视觉模型（例如通过 LiteLLM、text-generation-webui 等部署的本地大模型）
+
+**自定义模型的要求：**
+- 必须支持 OpenAI Chat Completions API 格式
+- 必须支持视觉输入（多模态 - 文本 + 图像）
+- 必须能够处理消息内容中的 base64 编码图像
+
+**使用 OpenAI GPT-4 Vision 的示例：**
+
+```bash
+# 使用 OpenAI GPT-4 Vision
+python main.py \
+  --base-url https://api.openai.com/v1 \
+  --model "gpt-4o" \
+  --apikey "your-openai-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**使用 Azure OpenAI 的示例：**
+
+```bash
+# 使用 Azure OpenAI 的 GPT-4 Vision
+python main.py \
+  --base-url https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME \
+  --model "gpt-4-vision-preview" \
+  --apikey "your-azure-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**使用自定义 OpenAI 兼容端点的示例：**
+
+```bash
+# 使用任何支持视觉的 OpenAI 兼容端点
+python main.py \
+  --base-url http://your-server:port/v1 \
+  --model "your-vision-model-name" \
+  --apikey "your-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**注意：** 使用自定义模型时，请确保它们针对 GUI 自动化任务进行了优化。AutoGLM 模型是专门为手机屏幕理解和动作规划微调的，可能比通用视觉模型提供更好的性能。
+
+#### 选项 C: 自行部署 AutoGLM 模型
 
 如果你希望在本地或自己的服务器上部署模型：
 

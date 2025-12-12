@@ -94,9 +94,9 @@ adb devices
 
 ### 3. Start Model Service
 
-You can choose to deploy the model service yourself or use a third-party model service provider.
+You can choose to deploy the model service yourself, use a third-party model service provider, or **use any OpenAI-compatible API with vision support** (including OpenAI GPT-4 Vision, Azure OpenAI, and other compatible providers).
 
-#### Option A: Use Third-Party Model Services
+#### Option A: Use Third-Party AutoGLM Model Services
 
 If you don't want to deploy the model yourself, you can use the following third-party services that have already deployed our model:
 
@@ -134,7 +134,55 @@ python main.py --base-url https://api.novita.ai/openai --model "zai-org/autoglm-
 python main.py --base-url https://api.parasail.io/v1 --model "parasail-auto-glm-9b-multilingual" --apikey "your-parasail-api-key" "Open Chrome browser"
 ```
 
-#### Option B: Deploy Model Yourself
+#### Option B: Use Your Own OpenAI-Compatible Vision Model
+
+Phone Agent is compatible with **any OpenAI-compatible API that supports vision capabilities**. This includes:
+
+- **OpenAI GPT-4 Vision** (GPT-4V, GPT-4o)
+- **Azure OpenAI Service** with vision-enabled models
+- **Other OpenAI-compatible providers** with vision support (e.g., local LLMs via LiteLLM, text-generation-webui, etc.)
+
+**Requirements for custom models:**
+- Must support the OpenAI Chat Completions API format
+- Must support vision input (multimodal - text + images)
+- Must be able to handle base64-encoded images in message content
+
+**Example with OpenAI GPT-4 Vision:**
+
+```bash
+# Using OpenAI GPT-4 Vision
+python main.py \
+  --base-url https://api.openai.com/v1 \
+  --model "gpt-4o" \
+  --apikey "your-openai-api-key" \
+  "Open Chrome browser"
+```
+
+**Example with Azure OpenAI:**
+
+```bash
+# Using Azure OpenAI with GPT-4 Vision
+python main.py \
+  --base-url https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME \
+  --model "gpt-4-vision-preview" \
+  --apikey "your-azure-api-key" \
+  "Open Chrome browser"
+```
+
+**Example with custom OpenAI-compatible endpoint:**
+
+```bash
+# Using any OpenAI-compatible endpoint with vision support
+python main.py \
+  --base-url http://your-server:port/v1 \
+  --model "your-vision-model-name" \
+  --apikey "your-api-key" \
+  "Open Chrome browser"
+```
+
+**Note:** When using custom models, ensure they are optimized for GUI automation tasks. The AutoGLM models are specifically fine-tuned for phone screen understanding and action planning, which may provide better performance than general-purpose vision models.
+
+#### Option C: Deploy AutoGLM Model Yourself
 
 If you prefer to deploy the model locally or on your own server:
 
