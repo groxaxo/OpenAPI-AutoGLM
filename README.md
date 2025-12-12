@@ -28,9 +28,9 @@ ADB(Android Debug Bridge)来控制设备，以视觉语言模型进行屏幕感�
 Agent 即可自动解析意图、理解当前界面、规划下一步动作并完成整个流程。系统还内置敏感操作确认机制，并支持在登录或验证码场景下进行人工接管。同时，它提供远程
 ADB 调试能力，可通过 WiFi 或网络连接设备，实现灵活的远程控制与开发。
 
-> ⚠️
-
 **🔥 新功能：Phone Agent 现已支持任何具有视觉功能的 OpenAI 兼容 API！** 可使用 GPT-4 Vision、Azure OpenAI 或自带的视觉模型。[了解更多 →](docs/OPENAI_COMPATIBLE.md)
+
+> ⚠️
 > 本项目仅供研究和学习使用。严禁用于非法获取信息、干扰系统或任何违法活动。请仔细审阅 [使用条款](resources/privacy_policy.txt)。
 
 ## 模型下载地址
