@@ -21,7 +21,7 @@ def example_openai_gpt4_vision():
     # Configure OpenAI GPT-4 Vision
     model_config = ModelConfig(
         base_url="https://api.openai.com/v1",
-        api_key="sk-YOUR_OPENAI_API_KEY_HERE",  # Replace with your actual OpenAI API key
+        api_key="sk-REPLACE_WITH_YOUR_ACTUAL_API_KEY",  # Replace with your actual OpenAI API key
         model_name="gpt-4o",  # or "gpt-4-vision-preview", "gpt-4-turbo"
         temperature=0.1,
         max_tokens=3000,
@@ -56,7 +56,7 @@ def example_azure_openai():
     # Format: https://{resource-name}.openai.azure.com/openai/deployments/{deployment-name}
     model_config = ModelConfig(
         base_url="https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME",
-        api_key="YOUR_AZURE_API_KEY_HERE",  # Replace with your actual Azure API key
+        api_key="REPLACE_WITH_YOUR_ACTUAL_AZURE_API_KEY",  # Replace with your actual Azure API key
         model_name="gpt-4-vision-preview",  # Your Azure deployment model
         temperature=0.1,
         max_tokens=3000,
@@ -93,7 +93,7 @@ def example_custom_openai_compatible():
 
     model_config = ModelConfig(
         base_url="http://localhost:8000/v1",  # Your custom endpoint
-        api_key="YOUR_CUSTOM_API_KEY_HERE",  # Or "EMPTY" if no auth required
+        api_key="REPLACE_WITH_YOUR_CUSTOM_API_KEY",  # Or "EMPTY" if no auth required
         model_name="your-vision-model-name",
         temperature=0.1,
         max_tokens=3000,
@@ -125,12 +125,12 @@ def example_with_environment_variables():
     # Set environment variables before running
     # export PHONE_AGENT_BASE_URL="https://api.openai.com/v1"
     # export PHONE_AGENT_MODEL="gpt-4o"
-    # export PHONE_AGENT_API_KEY="sk-YOUR_OPENAI_API_KEY_HERE"
+    # export PHONE_AGENT_API_KEY="sk-REPLACE_WITH_YOUR_ACTUAL_API_KEY"
 
     # Or set them programmatically for this example
     os.environ["PHONE_AGENT_BASE_URL"] = "https://api.openai.com/v1"
     os.environ["PHONE_AGENT_MODEL"] = "gpt-4o"
-    os.environ["PHONE_AGENT_API_KEY"] = "sk-YOUR_OPENAI_API_KEY_HERE"
+    os.environ["PHONE_AGENT_API_KEY"] = "sk-REPLACE_WITH_YOUR_ACTUAL_API_KEY"
 
     # ModelConfig will automatically use environment variables if not specified
     model_config = ModelConfig(
@@ -175,7 +175,7 @@ def example_comparing_models():
     print("\n--- Testing with GPT-4 Vision ---")
     gpt4v_config = ModelConfig(
         base_url="https://api.openai.com/v1",
-        api_key="sk-YOUR_OPENAI_API_KEY_HERE",
+        api_key="sk-REPLACE_WITH_YOUR_ACTUAL_API_KEY",
         model_name="gpt-4o",
     )
     gpt4v_agent = PhoneAgent(
