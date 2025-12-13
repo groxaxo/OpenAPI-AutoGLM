@@ -223,17 +223,16 @@ APP_PACKAGES: dict[str, str] = {
     "Instagram": "com.instagram.android",
     "instagram": "com.instagram.android",
     # International Apps - E-commerce & Shopping
-    "temu": "com.einnovation.temu",
-    "Temu": "com.einnovation.temu",
-    "TEMU": "com.einnovation.temu",
     "Amazon": "com.amazon.mShop.android.shopping",
     "amazon": "com.amazon.mShop.android.shopping",
     "Amazon Shopping": "com.amazon.mShop.android.shopping",
     "eBay": "com.ebay.mobile",
     "ebay": "com.ebay.mobile",
     "Ebay": "com.ebay.mobile",
+    "temu": "com.einnovation.temu",
+    "Temu": "com.einnovation.temu",
+    "TEMU": "com.einnovation.temu",
     # International Apps - Utilities
-    "SimpleCalendarPro": "com.scientificcalculatorplus.simplecalculator.basiccalculator.mathcalc",
     "SimpleSMSMessenger": "com.simplemobiletools.smsmessenger",
 }
 
