@@ -796,8 +796,8 @@ adb devices
 
 ```bash
 # 1. 克隆仓库(如果还没有克隆)
-git clone https://github.com/zai-org/Open-AutoGLM.git
-cd Open-AutoGLM
+git clone https://github.com/groxaxo/OpenAPI-AutoGLM.git
+cd OpenAPI-AutoGLM
 
 # 2. 创建虚拟环境(推荐)
 python -m venv venv

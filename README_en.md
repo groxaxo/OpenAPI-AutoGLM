@@ -719,8 +719,8 @@ adb devices
 
 ```bash
 # 1. Clone repository (if not already cloned)
-git clone https://github.com/zai-org/Open-AutoGLM.git
-cd Open-AutoGLM
+git clone https://github.com/groxaxo/OpenAPI-AutoGLM.git
+cd OpenAPI-AutoGLM
 
 # 2. Create virtual environment (recommended)
 python -m venv venv
