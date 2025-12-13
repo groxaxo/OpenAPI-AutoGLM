@@ -9,6 +9,18 @@
     👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> or <a href="https://discord.gg/QR7SARHRxK" target="_blank">Discord</a> communities
 </p>
 
+---
+
+## Acknowledgment
+
+🙏 **Special thanks to the original creators of this project - [zai-org](https://github.com/zai-org) and all contributors!**
+
+This project is a fork of the excellent [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) project. We are deeply grateful to the original team for creating this innovative phone automation framework and making it open source. Their pioneering work in mobile GUI automation with vision-language models has made this project possible.
+
+Thank you for building such an amazing foundation! 🎉
+
+---
+
 ## Quick Start
 
 You can use Claude Code with [GLM Coding Plan](https://z.ai/subscribe) and enter the following prompt to quickly deploy this project:
@@ -142,6 +154,8 @@ Phone Agent is compatible with **any OpenAI-compatible API that supports vision 
 
 - **OpenAI GPT-4 Vision** (GPT-4V, GPT-4o)
 - **Azure OpenAI Service** with vision-enabled models
+- **Fireworks AI** - Fast and cost-effective vision models
+- **OpenRouter** - Unified API for multiple LLM providers with vision support
 - **Other OpenAI-compatible providers** with vision support (e.g., local LLMs via LiteLLM, text-generation-webui, etc.)
 
 **Requirements for custom models:**
@@ -157,6 +171,28 @@ python main.py \
   --base-url https://api.openai.com/v1 \
   --model "gpt-4o" \
   --apikey "your-openai-api-key" \
+  "Open Chrome browser"
+```
+
+**Example with Fireworks AI:**
+
+```bash
+# Using Fireworks AI with Llama 3.2 Vision
+python main.py \
+  --base-url https://api.fireworks.ai/inference/v1 \
+  --model "accounts/fireworks/models/llama-v3p2-11b-vision-instruct" \
+  --apikey "fw-your-fireworks-api-key" \
+  "Open Chrome browser"
+```
+
+**Example with OpenRouter:**
+
+```bash
+# Using OpenRouter (supports multiple providers)
+python main.py \
+  --base-url https://openrouter.ai/api/v1 \
+  --model "openai/gpt-4o" \
+  --apikey "sk-or-v1-your-openrouter-api-key" \
   "Open Chrome browser"
 ```
 

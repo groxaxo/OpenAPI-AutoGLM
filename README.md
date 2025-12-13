@@ -12,6 +12,18 @@
     🎤 进一步在我们的产品 <a href="https://autoglm.zhipuai.cn/autotyper/" target="_blank">智谱 AI 输入法</a> 体验“用嘴发指令”
 </p>
 
+
+---
+
+## 致谢
+
+🙏 **特别感谢本项目的原始创建者 - [zai-org](https://github.com/zai-org) 及所有贡献者！**
+
+本项目是优秀的 [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) 项目的分支。我们深深感谢原始团队创建了这个创新的手机自动化框架并将其开源。他们在使用视觉语言模型进行移动 GUI 自动化方面的开创性工作使本项目成为可能。
+
+感谢你们打造了如此出色的基础！🎉
+
+---
 ## 懒人版快速安装
 
 你可以使用Claude Code，配置 [GLM Coding Plan](https://bigmodel.cn/glm-coding) 后，输入以下提示词，快速部署本项目。
@@ -141,6 +153,8 @@ Phone Agent 兼容**任何支持视觉功能的 OpenAI 兼容 API**。这包括�
 
 - **OpenAI GPT-4 Vision**（GPT-4V、GPT-4o）
 - **Azure OpenAI 服务**的视觉模型
+- **Fireworks AI** - 快速且经济的视觉模型
+- **OpenRouter** - 支持多个 LLM 提供商的统一 API，带视觉支持
 - **其他 OpenAI 兼容服务商**的视觉模型（例如通过 LiteLLM、text-generation-webui 等部署的本地大模型）
 
 **自定义模型的要求：**
@@ -156,6 +170,28 @@ python main.py \
   --base-url https://api.openai.com/v1 \
   --model "gpt-4o" \
   --apikey "your-openai-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**使用 Fireworks AI 的示例：**
+
+```bash
+# 使用 Fireworks AI 的 Llama 3.2 Vision
+python main.py \
+  --base-url https://api.fireworks.ai/inference/v1 \
+  --model "accounts/fireworks/models/llama-v3p2-11b-vision-instruct" \
+  --apikey "fw-your-fireworks-api-key" \
+  "打开美团搜索附近的火锅店"
+```
+
+**使用 OpenRouter 的示例：**
+
+```bash
+# 使用 OpenRouter（支持多个提供商）
+python main.py \
+  --base-url https://openrouter.ai/api/v1 \
+  --model "openai/gpt-4o" \
+  --apikey "sk-or-v1-your-openrouter-api-key" \
   "打开美团搜索附近的火锅店"
 ```
 

@@ -9,6 +9,8 @@ Any provider that implements the OpenAI Chat Completions API format with vision 
 ### Commercial Providers
 - **OpenAI** - GPT-4 Vision, GPT-4o, GPT-4 Turbo with vision
 - **Azure OpenAI Service** - Vision-enabled deployments
+- **Fireworks AI** - Fast and cost-effective vision models
+- **OpenRouter** - Unified API for multiple LLM providers
 - **Anthropic** (via compatibility layers)
 - **Google AI** (via compatibility layers)
 - And many others...
@@ -56,6 +58,66 @@ python main.py \
   --apikey sk-your-openai-api-key \
   "Open Chrome browser"
 ```
+
+### Fireworks AI
+
+Fireworks AI provides fast and cost-effective vision models with OpenAI-compatible API.
+
+```python
+model_config = ModelConfig(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key="fw-your-fireworks-api-key",
+    model_name="accounts/fireworks/models/llama-v3p2-11b-vision-instruct",  # or other vision models
+    temperature=0.1,
+)
+
+agent = PhoneAgent(model_config=model_config)
+```
+
+**Command line:**
+```bash
+python main.py \
+  --base-url https://api.fireworks.ai/inference/v1 \
+  --model "accounts/fireworks/models/llama-v3p2-11b-vision-instruct" \
+  --apikey "fw-your-fireworks-api-key" \
+  "Open Chrome browser"
+```
+
+**Popular vision models on Fireworks AI:**
+- `accounts/fireworks/models/llama-v3p2-11b-vision-instruct` - Fast Llama 3.2 vision model
+- `accounts/fireworks/models/llama-v3p2-90b-vision-instruct` - More capable Llama 3.2 vision model
+- Check [Fireworks AI Models](https://fireworks.ai/models) for the latest vision-enabled models
+
+### OpenRouter
+
+OpenRouter provides access to multiple LLM providers through a unified API, including many vision models.
+
+```python
+model_config = ModelConfig(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="sk-or-v1-your-openrouter-api-key",
+    model_name="openai/gpt-4o",  # or any vision model from supported providers
+    temperature=0.1,
+)
+
+agent = PhoneAgent(model_config=model_config)
+```
+
+**Command line:**
+```bash
+python main.py \
+  --base-url https://openrouter.ai/api/v1 \
+  --model "openai/gpt-4o" \
+  --apikey "sk-or-v1-your-openrouter-api-key" \
+  "Open Chrome browser"
+```
+
+**Popular vision models on OpenRouter:**
+- `openai/gpt-4o` - OpenAI's GPT-4 with vision
+- `anthropic/claude-3.5-sonnet` - Claude 3.5 Sonnet with vision
+- `google/gemini-pro-vision` - Google's Gemini Pro with vision
+- `meta-llama/llama-3.2-90b-vision-instruct` - Meta's Llama 3.2 vision model
+- Check [OpenRouter Models](https://openrouter.ai/models) for the complete list of vision-enabled models
 
 ### Azure OpenAI
 
