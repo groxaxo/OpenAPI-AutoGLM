@@ -335,7 +335,7 @@ client.client = OpenAI(
 
 ## Need Help?
 
-- Check the [main documentation](../README_en.md) for general setup
+- Check the [main documentation](../README.md) for general setup
 - See [examples/openai_compatible_models.py](../examples/openai_compatible_models.py) for complete code examples
 - Report issues on [GitHub Issues](https://github.com/zai-org/Open-AutoGLM/issues)
 
