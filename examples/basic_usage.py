@@ -12,7 +12,7 @@ from phone_agent.config import get_messages
 from phone_agent.model import ModelConfig
 
 
-def example_basic_task(lang: str = "cn"):
+def example_basic_task(lang: str = "en"):
     """Basic task example / 基础任务示例"""
     msgs = get_messages(lang)
 
@@ -37,11 +37,11 @@ def example_basic_task(lang: str = "cn"):
     )
 
     # Execute task
-    result = agent.run("打开小红书搜索美食攻略")  # "Open Xiaohongshu and search for food guides"
+    result = agent.run("Open eBay and search for wireless earphones")
     print(f"{msgs['task_result']}: {result}")
 
 
-def example_with_callbacks(lang: str = "cn"):
+def example_with_callbacks(lang: str = "en"):
     """Task example with callbacks / 带回调的任务示例"""
     msgs = get_messages(lang)
 
@@ -66,11 +66,11 @@ def example_with_callbacks(lang: str = "cn"):
     )
 
     # Execute task that may require confirmation
-    result = agent.run("打开淘宝搜索无线耳机并加入购物车")  # "Open Taobao, search for wireless earphones, and add to cart"
+    result = agent.run("Open Amazon, search for wireless earphones, and add to cart")
     print(f"{msgs['task_result']}: {result}")
 
 
-def example_step_by_step(lang: str = "cn"):
+def example_step_by_step(lang: str = "en"):
     """Step-by-step execution example (for debugging) / 单步执行示例（用于调试）"""
     msgs = get_messages(lang)
 
@@ -78,7 +78,7 @@ def example_step_by_step(lang: str = "cn"):
     agent = PhoneAgent(agent_config=agent_config)
 
     # Initialize task
-    result = agent.step("打开美团搜索附近的火锅店")  # "Open Meituan and search for nearby hotpot restaurants"
+    result = agent.step("Open Google Maps and search for nearby coffee shops")
     print(f"{msgs['step']} 1: {result.action}")
 
     # Continue if not finished
@@ -90,7 +90,7 @@ def example_step_by_step(lang: str = "cn"):
     print(f"\n{msgs['final_result']}: {result.message}")
 
 
-def example_multiple_tasks(lang: str = "cn"):
+def example_multiple_tasks(lang: str = "en"):
     """Batch task example / 批量任务示例"""
     msgs = get_messages(lang)
 
@@ -98,9 +98,9 @@ def example_multiple_tasks(lang: str = "cn"):
     agent = PhoneAgent(agent_config=agent_config)
 
     tasks = [
-        "打开高德地图查看实时路况",  # "Open Amap and check real-time traffic"
-        "打开大众点评搜索附近的咖啡店",  # "Open Dianping and search for nearby coffee shops"
-        "打开bilibili搜索Python教程",  # "Open Bilibili and search for Python tutorials"
+        "Open Google Maps and check real-time traffic",
+        "Open Yelp and search for nearby coffee shops",
+        "Open YouTube and search for Python tutorials",
     ]
 
     for task in tasks:
@@ -115,7 +115,7 @@ def example_multiple_tasks(lang: str = "cn"):
         agent.reset()
 
 
-def example_remote_device(lang: str = "cn"):
+def example_remote_device(lang: str = "en"):
     """Remote device example / 远程设备示例"""
     from phone_agent.adb import ADBConnection
 
@@ -142,7 +142,7 @@ def example_remote_device(lang: str = "cn"):
     agent = PhoneAgent(agent_config=agent_config)
 
     # Execute task
-    result = agent.run("打开微信查看消息")  # "Open WeChat and check messages"
+    result = agent.run("Open WhatsApp and check messages")
     print(f"{msgs['task_result']}: {result}")
 
     # Disconnect
@@ -156,7 +156,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--lang",
         type=str,
-        default="cn",
+        default="en",
         choices=["cn", "en"],
         help="Language for UI messages (cn=Chinese, en=English)",
     )

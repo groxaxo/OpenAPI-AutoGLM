@@ -1,6 +1,6 @@
 # Open-AutoGLM
 
-[中文阅读.](./README.md) | [📖 Using Custom OpenAI Models](docs/OPENAI_COMPATIBLE.md)
+[中文文档](README_zh.md) | [📖 Using Custom OpenAI Models](docs/OPENAI_COMPATIBLE.md)
 
 <div align="center">
 <img src=resources/logo.svg width="20%"/>
@@ -27,7 +27,7 @@ You can use Claude Code with [GLM Coding Plan](https://z.ai/subscribe) and enter
 
 ```
 Access the documentation and install AutoGLM for me
-https://raw.githubusercontent.com/zai-org/Open-AutoGLM/refs/heads/main/README_en.md
+https://raw.githubusercontent.com/groxaxo/OpenAPI-AutoGLM/refs/heads/main/README.md
 ```
 
 ## Project Introduction
@@ -719,8 +719,8 @@ adb devices
 
 ```bash
 # 1. Clone repository (if not already cloned)
-git clone https://github.com/zai-org/Open-AutoGLM.git
-cd Open-AutoGLM
+git clone https://github.com/groxaxo/OpenAPI-AutoGLM.git
+cd OpenAPI-AutoGLM
 
 # 2. Create virtual environment (recommended)
 python -m venv venv

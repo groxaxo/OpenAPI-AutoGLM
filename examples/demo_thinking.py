@@ -12,7 +12,7 @@ from phone_agent.config import get_messages
 from phone_agent.model import ModelConfig
 
 
-def main(lang: str = "cn"):
+def main(lang: str = "en"):
     msgs = get_messages(lang)
 
     print("=" * 60)
@@ -41,7 +41,7 @@ def main(lang: str = "cn"):
 
     # Execute task
     print(f"\n📱 {msgs['starting_task']}...\n")
-    result = agent.run("打开小红书搜索美食攻略")  # "Open Xiaohongshu and search for food guides"
+    result = agent.run("Open eBay and search for wireless earphones")
 
     print("\n" + "=" * 60)
     print(f"📊 {msgs['final_result']}: {result}")
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--lang",
         type=str,
-        default="cn",
+        default="en",
         choices=["cn", "en"],
         help="Language for UI messages (cn=Chinese, en=English)",
     )
