@@ -1,6 +1,7 @@
 """Model client for AI inference using OpenAI-compatible API."""
 
 import json
+import re
 import time
 from dataclasses import dataclass, field
 from typing import Any
@@ -173,6 +174,15 @@ class ModelClient:
             total_time=total_time,
         )
 
+    def _clean_xml_tags(self, text: str) -> str:
+        """Remove XML tags from text."""
+        if not text:
+            return text
+        # Remove think and answer tags
+        text = re.sub(r'</?think>', '', text)
+        text = re.sub(r'</?answer>', '', text)
+        return text.strip()
+
     def _parse_response(self, content: str) -> tuple[str, str]:
         """
         Parse the model response into thinking and action parts.
@@ -196,6 +206,8 @@ class ModelClient:
             parts = content.split("finish(message=", 1)
             thinking = parts[0].strip()
             action = "finish(message=" + parts[1]
+            thinking = self._clean_xml_tags(thinking)
+            action = self._clean_xml_tags(action)
             return thinking, action
 
         # Rule 2: Check for do(action=
@@ -203,6 +215,8 @@ class ModelClient:
             parts = content.split("do(action=", 1)
             thinking = parts[0].strip()
             action = "do(action=" + parts[1]
+            thinking = self._clean_xml_tags(thinking)
+            action = self._clean_xml_tags(action)
             return thinking, action
 
         # Rule 3: Fallback to legacy XML tag parsing
@@ -210,10 +224,16 @@ class ModelClient:
             parts = content.split("<answer>", 1)
             thinking = parts[0].replace("<think>", "").replace("</think>", "").strip()
             action = parts[1].replace("</answer>", "").strip()
+            thinking = self._clean_xml_tags(thinking)
+            action = self._clean_xml_tags(action)
             return thinking, action
 
         # Rule 4: No markers found, return content as action
-        return "", content
+        thinking = ""
+        action = content
+        thinking = self._clean_xml_tags(thinking)
+        action = self._clean_xml_tags(action)
+        return thinking, action
 
 
 class MessageBuilder:

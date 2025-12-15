@@ -282,7 +282,11 @@ def parse_action(response: str) -> dict[str, Any]:
         ValueError: If the response cannot be parsed.
     """
     try:
+        # Clean up any XML tags that might be present in the response
+        response = re.sub(r'</?answer>', '', response)
+        response = re.sub(r'</?think>', '', response)
         response = response.strip()
+        
         if response.startswith("do"):
             # Use AST parsing instead of eval for safety
             try:
